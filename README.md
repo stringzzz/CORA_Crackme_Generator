@@ -11,7 +11,7 @@ CORA: Crackme Originating Randomizing Automator
 
 For generating crackme challenges of different difficulty levels.
 
-When studying reverse software engineering, I came across the concept of crackme challenges. I found many of them, but when searching for a program
+When studying software reverse engineering, I came across the concept of crackme challenges. I found many of them, but when searching for a program
 that generates them, it seemed to turn up nothing. So, that's exactly what I made.
 
 You enter the name of the resulting executable, and the difficulty level (0-5 so far). Then, it generates a prng key with varying size, and
