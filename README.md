@@ -1,8 +1,10 @@
 # CORA_Crackme_Generator
 
 !!!! NOTE !!!!!!
+
 As of right now, this program is incomplete. What's there seems to work, but I need to add further difficulty levels.
 I'm basically just dumping this here incomplete as an extra backup, so stay tuned for the complete version!
+
 !!!!!!!!!!!!!!!!
 
 CORA: Crackme Originating Randomizing Automator
