@@ -181,7 +181,7 @@ int len = strlen(password_guess);\n\
 	authentication_final0 = authentication_final0.replace("{{ADD_BYTES}}", add_bytes_array)
 	c_source_final = c_source_template.replace("{{AUTHENTICATION}}", authentication_final0)
 	
-if (difficulty_level == 5):
+elif (difficulty_level == 5):
 	authentication_template0 = "\
 int len = strlen(password_guess);\n\
 	char password_guess2[len * 2 + 1];\n\
