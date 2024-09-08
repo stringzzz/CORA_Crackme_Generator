@@ -363,6 +363,125 @@ char* abCompress(char s1[], char detect_char, char replace_char1, char replace_c
 }\n\
 	")
 	
+elif (difficulty_level == 7):
+	authentication_template0 = "\
+int len = strlen(password_guess);\n\
+	\n\
+	for(int i = 0; i < len; i++) {\n\
+		if (password_guess[i] < 25) {\n\
+			if (password_guess[i] < 15) {\n\
+				password_guess[i] ^= 10;\n\
+			} else if (password_guess[i] < 20) {\n\
+				password_guess[i] = (password_guess[i] + 150) % 128;\n\
+			} else {\n\
+				password_guess[i] ^= 22;\n\
+			}\n\
+		} else if (password_guess[i] < 50) {\n\
+			if (password_guess[i] < 30) {\n\
+				password_guess[i] = (password_guess[i] + 122) % 128;\n\
+			} else if (password_guess[i] < 40) {\n\
+				password_guess[i] ^= 120;\n\
+			} else {\n\
+				password_guess[i] = (password_guess[i] + 155) % 128;\n\
+			}\n\
+		} else if (password_guess[i] < 75) {\n\
+			if (password_guess[i] < 55) {\n\
+				password_guess[i] ^= 90;\n\
+			} else if (password_guess[i] < 65) {\n\
+				password_guess[i] = (password_guess[i] + 140) % 128;\n\
+			} else {\n\
+				password_guess[i] = (password_guess[i] + 165) % 128;\n\
+			}\n\
+		} else if (password_guess[i] < 100) {\n\
+			if (password_guess[i] < 80) {\n\
+				password_guess[i] ^= 77;\n\
+			} else if (password_guess[i] < 90) {\n\
+				password_guess[i] = (password_guess[i] + 129) % 128;\n\
+				} else {\n\
+				password_guess[i] ^= 27;\n\
+			}\n\
+		} else if (password_guess[i] < 125) {\n\
+			if (password_guess[i] < 110) {\n\
+				password_guess[i] ^= 30;\n\
+			} else if (password_guess[i] < 118) {\n\
+				password_guess[i] ^= 40;\n\
+			} else {\n\
+				password_guess[i] ^= 50;\n\
+			}\n\
+		} else {\n\
+			password_guess[i] = ((password_guess[i] ^ 66) + 195) % 128;\n\
+		}\n\
+	}\n\
+	\n\
+	char hex_guess[len * 2 + 1];\n\
+	\n\
+	for(int i = 0; i < len; i++) {\n\
+		sprintf(hex_guess + i*2, \"%02x\", password_guess[i]);\n\
+	}\n\
+	\n\
+	if (strcmp(hex_guess, {{PASSWORD}}) == 0) {\n\
+		authenticated = 1;\n\
+	}\n\
+	"
+	
+	password1 = password_gen()
+	password2 = ""
+	
+	pass_bytes = []
+	for n in range(0, len(password1)):
+		pass_bytes.append(ord(password1[n]))
+
+	for i in range(0, len(pass_bytes)):
+		if (pass_bytes[i] < 25):
+			if (pass_bytes[i] < 15):
+				pass_bytes[i] ^= 10;
+			elif (pass_bytes[i] < 20):
+				pass_bytes[i] = (pass_bytes[i] + 150) % 128;
+			else:
+				pass_bytes[i] ^= 22;
+			
+		elif (pass_bytes[i] < 50):
+			if (pass_bytes[i] < 30):
+				pass_bytes[i] = (pass_bytes[i] + 122) % 128;
+			elif (pass_bytes[i] < 40):
+				pass_bytes[i] ^= 120;
+			else:
+				pass_bytes[i] = (pass_bytes[i] + 155) % 128;
+			
+		elif (pass_bytes[i] < 75):
+			if (pass_bytes[i] < 55):
+				pass_bytes[i] ^= 90;
+			elif (pass_bytes[i] < 65):
+				pass_bytes[i] = (pass_bytes[i] + 140) % 128;
+			else:
+				pass_bytes[i] = (pass_bytes[i] + 165) % 128;
+			
+		elif (pass_bytes[i] < 100):
+			if (pass_bytes[i] < 80):
+				pass_bytes[i] ^= 77;
+			elif (pass_bytes[i] < 90):
+				pass_bytes[i] = (pass_bytes[i] + 129) % 128;	
+			else:
+				pass_bytes[i] ^= 27;
+			
+		elif (pass_bytes[i] < 125):
+			if (pass_bytes[i] < 110):
+				pass_bytes[i] ^= 30;
+			elif (pass_bytes[i] < 118):
+				pass_bytes[i] ^= 40;
+			else:
+				pass_bytes[i] ^= 50;
+			
+		else:
+			pass_bytes[i] = ((pass_bytes[i] ^ 66) + 195) % 128;
+
+	password2 = ""
+	for n in range(0, len(pass_bytes)):
+		password2 += format(pass_bytes[n], "02x")
+	
+	authentication_final0 = authentication_template0.replace("{{PASSWORD}}", "\"" + password2 + "\"")
+	c_source_final = c_source_template.replace("{{AUTHENTICATION}}", authentication_final0)
+	
 else:
 	print("This level hasn't been made yet!\n")
 	exit()
