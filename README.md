@@ -14,9 +14,10 @@ For generating crackme challenges of different difficulty levels.
 When studying software reverse engineering, I came across the concept of crackme challenges. I found many of them, but when searching for a program
 that generates them, it seemed to turn up nothing. So, that's exactly what I made.
 
-You enter the name of the resulting executable, and the difficulty level (0-7 so far). Then, it generates a prng key with varying size, and
+You enter the name of the resulting executable, and the difficulty level (0-8 so far). Then, it generates a prng key with varying size, and
 sets up the C source code according to the difficulty level. Finally, it outputs the source code and compiles it with gcc. Then, the idea is to use whatever tools
-you wish to RE the executable and get the correct password to input. 
+you wish to RE the executable and get the correct password to input. Obviously, you could just change the jump conditional to a jmp straight to
+the win message, but this defeats the whole point of the challenge. Do what you want, though...
 
 It uses gcc by default, but of course you could change this to any other command line C compiler of your choice. 
 If you want to see the source code first without compiling it, you can also just comment out that 'os.system(gcc __)' line. 
