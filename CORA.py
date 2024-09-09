@@ -538,6 +538,10 @@ int len = strlen(password_guess);\n\
 		\n\
 		int len2 = strlen(password_guess2);\n\
 		\n\
+		for(int i = 0, i2 = 0; (i < len) && (i2 < len2); i++, i2++) {\n\
+			password_guess2[i2] ^= password_guess[i];\n\
+		}\n\
+		\n\
 		char hex_guess2[len2 * 2 + 1];\n\
 		\n\
 		for(int i = 0; i < len2; i++) {\n\
@@ -557,11 +561,18 @@ int len = strlen(password_guess);\n\
 		
 	password1_2 = password_gen()
 	password2_2 = ""
-	for n in range(0, len(password1_2)):
-		password2_2 += format(ord(password1_2[n]), "02x")
+	i = 0
+	i2 = 0
+	while (i < len(password1) and i2 < len(password1_2)):
+		password2_2 += chr(ord(password1_2[i2]) ^ ord(password1[i]))
+		i += 1
+		i2 += 1
+	password3_2 = ""
+	for n in range(0, len(password2_2)):
+		password3_2 += format(ord(password2_2[n]), "02x")
 	
 	authentication_final0 = authentication_template0.replace("{{PASSWORD1}}", "\"" + password2 + "\"")
-	authentication_final0 = authentication_final0.replace("{{PASSWORD2}}", "\"" + password2_2 + "\"")
+	authentication_final0 = authentication_final0.replace("{{PASSWORD2}}", "\"" + password3_2 + "\"")
 	c_source_final = c_source_template.replace("{{AUTHENTICATION}}", authentication_final0)
 	c_source_final = c_source_final.replace("#include <stdbool.h>\n", "#include <stdbool.h>\n#include <stdlib.h>\n#include <netinet/in.h>\n#include <sys/socket.h>\n#include <unistd.h>\n\n")
 	
