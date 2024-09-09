@@ -6,6 +6,7 @@
 #
 # Start Date: 09-04-2024
 # Levels 0-5 Complete Date: 09-05-2024
+# Levels 6-8 Complate Date: 09-09-2024
 
 import os
 import random
@@ -31,9 +32,9 @@ int main() {\n\
 	scanf(\"%[^\\n]%*c\", password_guess);\n\
 	{{AUTHENTICATION}}\n\
 	if (authenticated) {\n\
-		printf(\"SUCCESS! GOOD JOB!\\n\");\n\
+		printf(\"\\nSUCCESS! GOOD JOB!\\n\\n\");\n\
 	} else {\n\
-		printf(\"FAILURE! TRY AGAIN!\\n\");\n\
+		printf(\"\\nFAILURE! TRY AGAIN!\\n\\n\");\n\
 	}\n\
 	\n\
 	return 0;\n\
@@ -481,6 +482,88 @@ int len = strlen(password_guess);\n\
 	
 	authentication_final0 = authentication_template0.replace("{{PASSWORD}}", "\"" + password2 + "\"")
 	c_source_final = c_source_template.replace("{{AUTHENTICATION}}", authentication_final0)
+	
+elif (difficulty_level == 8):
+	authentication_template0 = "\
+int len = strlen(password_guess);\n\
+	\n\
+	char hex_guess1[len * 2 + 1];\n\
+	\n\
+	for(int i = 0; i < len; i++) {\n\
+		sprintf(hex_guess1 + i*2, \"%02x\", password_guess[i]);\n\
+	}\n\
+	\n\
+	if (strcmp(hex_guess1, {{PASSWORD1}}) == 0) {\n\
+		\n\
+		int server_fd, new_socket;\n\
+		ssize_t valread;\n\
+		struct sockaddr_in address;\n\
+		int opt = 1;\n\
+		socklen_t addrlen = sizeof(address);\n\
+		char password_guess2[64] = { 0 };\n\
+		\n\
+		if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {\n\
+			perror(\"socket failed\");\n\
+			exit(EXIT_FAILURE);\n\
+		}\n\
+		\n\
+		if (setsockopt(server_fd, SOL_SOCKET, SO_REUSEADDR | SO_REUSEPORT, &opt, sizeof(opt))) {\n\
+			perror(\"setsockopt\");\n\
+			exit(EXIT_FAILURE);\n\
+		}\n\
+		address.sin_family = AF_INET;\n\
+		address.sin_addr.s_addr = INADDR_ANY;\n\
+		address.sin_port = htons(25535);\n\
+		\n\
+		if (bind(server_fd, (struct sockaddr*)&address, sizeof(address)) < 0) {\n\
+			perror(\"bind failed\");\n\
+			exit(EXIT_FAILURE);\n\
+		}\n\
+		\n\
+		printf(\"I'm listening...\\n\");\n\
+		if (listen(server_fd, 3) < 0) {\n\
+			perror(\"listen\");\n\
+			exit(EXIT_FAILURE);\n\
+		}\n\
+		\n\
+		if ((new_socket = accept(server_fd, (struct sockaddr*)&address, &addrlen)) < 0) {\n\
+			perror(\"accept\");\n\
+			exit(EXIT_FAILURE);\n\
+		}\n\
+		\n\
+		valread = read(new_socket, password_guess2, 64 - 1);\n\
+		\n\
+		close(new_socket);\n\
+		close(server_fd);\n\
+		\n\
+		int len2 = strlen(password_guess2);\n\
+		\n\
+		char hex_guess2[len2 * 2 + 1];\n\
+		\n\
+		for(int i = 0; i < len2; i++) {\n\
+			sprintf(hex_guess2 + i*2, \"%02x\", password_guess2[i]);\n\
+		}\n\
+		\n\
+		if (strcmp(hex_guess2, {{PASSWORD2}}) == 0) {\n\
+			authenticated = 1;\n\
+		}\n\
+	}\n\
+	"
+	
+	password1 = password_gen()
+	password2 = ""
+	for n in range(0, len(password1)):
+		password2 += format(ord(password1[n]), "02x")
+		
+	password1_2 = password_gen()
+	password2_2 = ""
+	for n in range(0, len(password1_2)):
+		password2_2 += format(ord(password1_2[n]), "02x")
+	
+	authentication_final0 = authentication_template0.replace("{{PASSWORD1}}", "\"" + password2 + "\"")
+	authentication_final0 = authentication_final0.replace("{{PASSWORD2}}", "\"" + password2_2 + "\"")
+	c_source_final = c_source_template.replace("{{AUTHENTICATION}}", authentication_final0)
+	c_source_final = c_source_final.replace("#include <stdbool.h>\n", "#include <stdbool.h>\n#include <stdlib.h>\n#include <netinet/in.h>\n#include <sys/socket.h>\n#include <unistd.h>\n\n")
 	
 else:
 	print("This level hasn't been made yet!\n")
