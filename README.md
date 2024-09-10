@@ -5,9 +5,23 @@
 As of right now, this program is incomplete. What's there seems to work, but I need to add further difficulty levels.
 I'm basically just dumping this here incomplete as an extra backup, so stay tuned for the complete version!
 
-Thought levels 5-6 were complete, but when attempting them on Kali Linux, I found an unusual problem. I technically found a fix,
-but it doesn't really make sense as to why it fixed it and seems to be a really crude way of doing so.
-All the other current levels work on both Ubuntu and Kali, not sure if any of it works on Windows, though.
+Discovered unusual behavior due to the use of sprintf, couldn't find a way to make it work properly so I ditched that in 
+place of my own code that does essentially the same thing. In the process, I found that in some of the code where there 
+is an XOR or Addition % 128, the resulting string char can end up becoming a null byte, which terminates the string prematurely 
+when using functions like strlen. After much debugging and testing, it seems that it all works on both Ubuntu and Kali, 
+but I'm not 100% confident that there is no other kind of bugs lurking in there.
+
+!!!!!!!!!!!!!!!
+
+If you are using any version that was up on here before 09-10-2024, do not bother using it, just download the new one.
+The newer one will have this comment at the top:
+"Major overhaul to fix several different problems Complete Date: 09-10-2024"
+Due to the mistakes made in it, you can actually end up getting the correct password, but it won't be correct
+in the 'strcmp' by time it goes through the rest of the code. This is an embarassing mistake, and apologies
+to anyone who used this program before that date, as they may have wasted a lot of time trying to solve something that didn't even
+work properly. (>_<)
+
+!!!!!!!!!!!!!!!
 
 !!!!!!!!!!!!!!!!
 
