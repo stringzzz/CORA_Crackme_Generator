@@ -5,7 +5,7 @@
 As of right now, this program is incomplete. What's there seems to work, but I need to add further difficulty levels.
 I'm basically just dumping this here incomplete as an extra backup, so stay tuned for the complete version!
 
-Thought levels 5-6 were complete, but when attempting them on Kali Linux, I found an unusual problem. I techincally found a fix,
+Thought levels 5-6 were complete, but when attempting them on Kali Linux, I found an unusual problem. I technically found a fix,
 but it doesn't really make sense as to why it fixed it and seems to be a really crude way of doing so.
 All the other current levels work on both Ubuntu and Kali, not sure if any of it works on Windows, though.
 
