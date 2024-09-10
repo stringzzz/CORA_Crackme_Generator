@@ -15,7 +15,9 @@ but I'm not 100% confident that there is no other kind of bugs lurking in there.
 
 If you are using any version that was up on here before 09-10-2024, do not bother using it, just download the new one.
 The newer one will have this comment at the top:
+
 "Major overhaul to fix several different problems Complete Date: 09-10-2024"
+
 Due to the mistakes made in it, you can actually end up getting the correct password, but it won't be correct
 in the 'strcmp' by time it goes through the rest of the code. This is an embarassing mistake, and apologies
 to anyone who used this program before that date, as they may have wasted a lot of time trying to solve something that didn't even
