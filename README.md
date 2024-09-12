@@ -16,8 +16,6 @@ in the 'strcmp' by time it goes through the rest of the code. This is an embaras
 to anyone who used this program before that date, as they may have wasted a lot of time trying to solve something that didn't even
 work properly. (>_<)
 
-!!!!!!!!!!!!!!!
-
 !!!!!!!!!!!!!!!!
 
 CORA: Crackme Originating Randomizing Automator
