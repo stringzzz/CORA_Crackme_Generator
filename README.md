@@ -36,7 +36,7 @@ If you want to see the source code first without compiling it, you can also just
 By default, it also does not delete the source code file. If you are serious about practicing reverse engineering, you may want to 
 uncomment the 'os.system(rm -i ___)' line so it deletes that file, then you can avoid the temptation of peeking at the C source which does make it too easy to solve.
 
-TIP: Most levels build on the previous levels, so if you analyze the disassembly for one and keep good note, it will often help when
+TIP: Most levels build on the previous levels, so if you analyze the disassembly for one and keep good notes, it will often help when
 you start to recognize the same instruction patterns in the later levels, possibly saving a lot of time.
 
 This program will not have any kind of license on it, so you are free to do whatever with it.
