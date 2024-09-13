@@ -1,7 +1,7 @@
 # CORA_Crackme_Generator
 
-I finished this project for now. Levels 0-9 are complete and tested (On Ubuntu and Kali). I may make further levels eventually, but I'm not sure yet.
-One thing I will do is analyze the disassemblies of them, and along with the solution code I already have written,
+I will keep adding new levels until I run out of ideas for them.
+One thing I will also do is analyze the disassemblies of them, and along with the solution code I already have written,
 I will upload a directory 'solutions' with all of that.
 
 !!!! NOTE !!!!!!
@@ -25,16 +25,19 @@ For generating crackme challenges of different difficulty levels.
 When studying software reverse engineering, I came across the concept of crackme challenges. I found many of them, but when searching for a program
 that generates them, it seemed to turn up nothing. So, that's exactly what I made.
 
-You enter the name of the resulting executable, and the difficulty level (0-9). Then, it generates a prng key with varying size, and
-sets up the C source code according to the difficulty level. Finally, it outputs the source code and compiles it with gcc. Then, the idea is to use whatever tools
-you wish to RE the executable and get the correct password to input. Obviously, you could just change the jump conditional to a jmp straight to
-the win message, but this defeats the whole point of the challenge. Do what you want, though...
+You enter the name of the resulting executable, and the difficulty level (0-10). Then, it generates a prng key with varying size, along with possibly prng 
+generating different sets of values and sets up the C source code according to the difficulty level. Finally, it outputs the source code 
+and compiles it with gcc. Then, the idea is to use whatever tools you wish to RE the executable and get the correct password to input. 
+Obviously, you could just change the jump conditional to a jmp straight to the win message, but this defeats the whole point of the challenge. Do what you want, though...
 
 It uses gcc by default, but of course you could change this to any other command line C compiler of your choice. 
 If you want to see the source code first without compiling it, you can also just comment out that 'os.system(gcc __)' line. 
 
 By default, it also does not delete the source code file. If you are serious about practicing reverse engineering, you may want to 
 uncomment the 'os.system(rm -i ___)' line so it deletes that file, then you can avoid the temptation of peeking at the C source which does make it too easy to solve.
+
+TIP: Most levels build on the previous levels, so if you analyze the disassembly for one and keep good note, it will often help when
+you start to recognize the same instruction patterns in the later levels, possibly saving a lot of time.
 
 This program will not have any kind of license on it, so you are free to do whatever with it.
 I hope someone gets something out of this, enjoy!
