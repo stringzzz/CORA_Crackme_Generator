@@ -1,8 +1,8 @@
 # CORA_Crackme_Generator
 
 I will keep adding new levels until I run out of ideas for them.
-One thing I will also do is analyze the disassemblies of them, and along with the solution code I already have written,
-I will upload a directory 'solutions' with all of that.
+There is now a directory called 'solutions'. Right now it only contains the solutions
+for levels 0-2. I will add more once I do the analysis of their disassemblies.
 
 !!!! NOTE !!!!!!
 
