@@ -16,6 +16,8 @@ in the 'strcmp' by time it goes through the rest of the code. This is an embaras
 to anyone who used this program before that date, as they may have wasted a lot of time trying to solve something that didn't even
 work properly. (>_<)
 
+Realized another bug: Any level involving a fixed-size array for operations such as XOR, ADD % 128, etc. are likely to cause a SEG FAULT when inputting a password longer than the array size (Array size == strlen(correct password), so I guess that's one way to know you have the wrong password... :P). I know what needs to be done to fix it, I just haven't gotten to it yet. I'm sure it will bother me to the point where I feel I have to fix it.
+
 !!!!!!!!!!!!!!!!
 
 CORA: Crackme Originating Randomizing Automator
@@ -25,7 +27,7 @@ For generating crackme challenges of different difficulty levels.
 When studying software reverse engineering, I came across the concept of crackme challenges. I found many of them, but when searching for a program
 that generates them, it seemed to turn up nothing. So, that's exactly what I made.
 
-You enter the name of the resulting executable, and the difficulty level (0-10). Then, it generates a prng password with varying size, along with possibly prng 
+You enter the name of the resulting executable, and the difficulty level (0-11). Then, it generates a prng password with varying size, along with possibly prng 
 generating different sets of values for the operations done on the input password and sets up the C source code according to the difficulty level. Finally, it outputs the source code 
 and compiles it with gcc. Then, the idea is to use whatever tools you wish to RE the executable and get the correct password to input. 
 Obviously, you could just change the jump conditional to a jmp straight to the win message, but this defeats the whole point of the challenge. Do what you want, though...
