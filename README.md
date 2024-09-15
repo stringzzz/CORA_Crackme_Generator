@@ -16,8 +16,6 @@ in the 'strcmp' by time it goes through the rest of the code. This is an embaras
 to anyone who used this program before that date, as they may have wasted a lot of time trying to solve something that didn't even
 work properly. (>_<)
 
-Realized another bug: Any level involving a fixed-size array for operations such as XOR, ADD % 128, etc. are likely to cause a SEG FAULT when inputting a password longer than the array size (Array size == strlen(correct password), so I guess that's one way to know you have the wrong password... :P). I know what needs to be done to fix it, I just haven't gotten to it yet. I'm sure it will bother me to the point where I feel I have to fix it.
-
 !!!!!!!!!!!!!!!!
 
 CORA: Crackme Originating Randomizing Automator
