@@ -25,7 +25,7 @@ For generating crackme challenges of different difficulty levels.
 When studying software reverse engineering, I came across the concept of crackme challenges. I found many of them, but when searching for a program
 that generates them, it seemed to turn up nothing. So, that's exactly what I made.
 
-You enter the name of the resulting executable, and the difficulty level (0-11). Then, it generates a prng password with varying size, along with possibly prng 
+You enter the name of the resulting executable, and the difficulty level (0-12). Then, it generates a prng password with varying size, along with possibly prng 
 generating different sets of values for the operations done on the input password and sets up the C source code according to the difficulty level. Finally, it outputs the source code 
 and compiles it with gcc. Then, the idea is to use whatever tools you wish to RE the executable and get the correct password to input. 
 Obviously, you could just change the jump conditional to a jmp straight to the win message, but this defeats the whole point of the challenge. Do what you want, though...
