@@ -1,8 +1,12 @@
 # CORA_Crackme_Generator
 
-I will keep adding new levels until I run out of ideas for them.
+I'm pretty sure I'm done adding levels now with the final being level 13.
+There's just only so much you can do without modifying the program post-compile.
+I could make things more complicated, but it would just be the same operations repeated.
+I figure by time you might get to the end levels, you've pretty much seen it all so it shouldn't be that much harder, maybe just more time-consuming.
 There is now a directory called 'solutions'. Right now it only contains the solutions
 for levels 0-2. I will add more once I do the analysis of their disassemblies.
+Now that it's finished and fully tested, I should have more time for the analysis, so stay posted for solutions if you need help with any of it.
 
 !!!! NOTE !!!!!!
 
@@ -25,7 +29,7 @@ For generating crackme challenges of different difficulty levels.
 When studying software reverse engineering, I came across the concept of crackme challenges. I found many of them, but when searching for a program
 that generates them, it seemed to turn up nothing. So, that's exactly what I made.
 
-You enter the name of the resulting executable, and the difficulty level (0-12). Then, it generates a prng password with varying size, along with possibly prng 
+You enter the name of the resulting executable, and the difficulty level (0-13). Then, it generates a prng password with varying size, along with possibly prng 
 generating different sets of values for the operations done on the input password and sets up the C source code according to the difficulty level. Finally, it outputs the source code 
 and compiles it with gcc. Then, the idea is to use whatever tools you wish to RE the executable and get the correct password to input. 
 Obviously, you could just change the jump conditional to a jmp straight to the win message, but this defeats the whole point of the challenge. Do what you want, though...
