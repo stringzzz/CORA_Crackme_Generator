@@ -8,6 +8,8 @@ There is now a directory called 'solutions'. Right now it only contains the solu
 for levels 0-2. I will add more once I do the analysis of their disassemblies.
 Now that it's finished and fully tested, I should have more time for the analysis, so stay posted for solutions if you need help with any of it.
 
+There is now also a library of C functions I made if you feel up to making your own crackme challenges, hopefully they can be useful for that.
+
 !!!! NOTE !!!!!!
 
 If you are using any version that was up on here before 09-10-2024, do not bother using it, just download the new one.
